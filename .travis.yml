@@ -1,0 +1,34 @@
+sudo: false
+language: cpp
+enc:
+  - distribution: ubuntu
+  - distribution: fedora
+
+compiler:
+  - clang
+  - gcc
+
+before_install:
+- if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
+# Install conan
+- pip install conan
+# Automatic detection of your arch, compiler, etc.
+- conan user
+
+addons:
+	apt:
+		sources:
+			- ubuntu-toolchain-r-test
+		packages:
+			- clang-4.0
+			- gcc-5
+			- g++-5
+      - cmake
+script:
+  - g++ -v && cmake --version
+  - mkdir build
+  - cd build
+  - conan install .
+  - cmake ../
+  - ctest
+
