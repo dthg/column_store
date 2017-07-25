@@ -18,5 +18,10 @@ enable_testing()
 file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/*.cpp)
 set(PROJECT_TEST_NAME column_store_test)
 add_executable(${PROJECT_TEST_NAME} ${TEST_SRC_FILES})
+add_test(
+  NAME column_store_test
+  WORKING_DIRECTORY ${CMAKE_BINARY_DIRECTORY}/bin
+  COMMAND ${PROJECT_TEST_NAME}
+)
 
 target_link_libraries(${PROJECT_TEST_NAME} ${CONAN_LIBS} COLUMN_LIB)
