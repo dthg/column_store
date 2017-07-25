@@ -29,5 +29,6 @@ script:
 - cd build
 - conan install --build missing --file ../conanfile.txt
 - cmake ../
-- ctest
+- make
+- make test
 
