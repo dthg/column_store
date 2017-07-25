@@ -16,13 +16,13 @@ before_install:
 - conan user
 
 addons:
-	apt:
-		sources:
-			- ubuntu-toolchain-r-test
-		packages:
-			- clang-4.0
-			- gcc-5
-			- g++-5
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+        packages:
+            - clang-4.0
+            - gcc-5
+            - g++-5
       - cmake
 script:
   - g++ -v && cmake --version
