@@ -30,12 +30,12 @@ matrix:
             - gcc-5
 
 install:
-  - if [[ "${COMPILER_CXX}" != "" ]]; then export CXX=${COMPILER}; fi
-  - if [[ "${COMPILER_CC}" != "" ]]; then export CXX=${COMPILER}; fi
+  - if [[ "${COMPILER_CXX}" != "" ]]; then export CXX=${COMPILER_CXX}; fi
+  - if [[ "${COMPILER_CC}" != "" ]]; then export CC=${COMPILER_CC}; fi
 script:
 - mkdir build
 - cd build
-- conan install --build missing --file ../conanfile.txt -s compiler=$COMPILER -s compiler.libcxx=libstdc++11
+- conan install --build missing --file ../conanfile.txt
 
 - cmake ../
 - make
