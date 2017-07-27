@@ -35,7 +35,8 @@ install:
 script:
 - mkdir build
 - cd build
-- conan install --build missing --file ../conanfile.txt -s compiler=$COMPILER
+- conan install --build missing --file ../conanfile.txt -s compiler=$COMPILER -s compiler.libcxx=libstdc++11
+
 - cmake ../
 - make
 - make test
