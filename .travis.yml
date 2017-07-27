@@ -11,7 +11,7 @@ before_install:
 
 matrix:
   include:
-    - env: COMPILER_NAME=clang-4.0 CXX=clang++-4.0 CC=clang-4.0
+    - env: COMPILER=clang++-4.0
       addons:
         apt:
           sources:
@@ -19,7 +19,7 @@ matrix:
           packages:
             - clang-4.0
             - cmake
-    - env: COMPILER_NAME=gcc CXX=g++-5 CC=gcc-5
+    - env: COMPILER=g++-5
       addons:
         apt:
           sources:
@@ -29,10 +29,12 @@ matrix:
             - g++-5
             - gcc-5
 
+install:
+  - if [[ "${COMPILER}" != "" ]]; then export CXX=${COMPILER}; fi
 script:
 - mkdir build
 - cd build
-- conan install --build missing --file ../conanfile.txt
+- conan install --build missing --file ../conanfile.txt -s compiler=$CXX
 - cmake ../
 - make
 - make test
