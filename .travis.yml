@@ -2,7 +2,8 @@ sudo: false
 language: cpp
 os: linux
 dist: trusty
-cache: ccache
+cache: ccache pip
+
 
 before_install:
 # Install conan
