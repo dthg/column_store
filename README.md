@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/dthg/column_store.svg?branch=master)](https://travis-ci.org/dthg/column_store)
-A simple proof of concept for a columnar data format.
+
+A simple proof of concept columnar data format.
 
 Conceptually this aims to convert a collection of some type `T` and writing columns (struct member) to disk.
 It will also support reading and deserialising data stored in this format. 
